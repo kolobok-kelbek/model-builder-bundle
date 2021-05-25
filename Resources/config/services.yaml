@@ -1,0 +1,46 @@
+parameters:
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  ModelBuilder\PreparerCollection\DefaultPreparerCollection:
+    arguments:
+      - '@ModelBuilder\Preparer\SetterNameToFieldNamePreparer'
+
+  ModelBuilder\Way\PublicFieldsWay:
+    arguments:
+      - !php/const ModelBuilder\Ways::PUBLIC_FIELDS
+      - 2
+      - '@ModelBuilder\PreparerCollection\DefaultPreparerCollection'
+
+  ModelBuilder\Way\ConstructorWay:
+    arguments:
+      - !php/const ModelBuilder\Ways::CONSTRUCTOR
+      - 1
+      - '@ModelBuilder\PreparerCollection\DefaultPreparerCollection'
+
+  ModelBuilder\Way\SetterWay:
+    arguments:
+      - !php/const ModelBuilder\Ways::SETTERS
+      - 3
+
+  ModelBuilder\Way\ReflectionWay:
+    arguments:
+      - !php/const ModelBuilder\Ways::REFLECTION
+      - 4
+      - '@ModelBuilder\PreparerCollection\DefaultPreparerCollection'
+
+  ModelBuilder\Analyzer\:
+    resource: '../src/Builder/Analyzer/'
+
+  ModelBuilder\Manager\DefaultBuildManager:
+    arguments:
+      - - '@ModelBuilder\Way\ConstructorWay'
+        - '@ModelBuilder\Way\PublicFieldsWay'
+        - '@ModelBuilder\Way\SetterWay'
+        - '@ModelBuilder\Way\ReflectionWay'
+      - !php/const:ModelBuilder\Ways::CONSTRUCTOR: '@ModelBuilder\Analyzer\ConstructAnalyzer'
+        !php/const:ModelBuilder\Ways::PUBLIC_FIELDS: '@ModelBuilder\Analyzer\PublicFieldsAnalyzer'
+        !php/const:ModelBuilder\Ways::SETTERS: '@ModelBuilder\Analyzer\SetterAnalyzer'

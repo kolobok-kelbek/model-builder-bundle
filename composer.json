@@ -1,0 +1,28 @@
+{
+    "name": "kelbek/model-builder-symfony",
+    "description": "Model builder library.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilia Krasnoschekov (kelbek)",
+            "email": "dev_kelbek@mail.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ModelBuilder\\": ""
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "kelbek/model-builder": "dev-main"
+    },
+    "require-dev": {},
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/kolobok-kelbek/model-builder.git"
+        }
+    ]
+}

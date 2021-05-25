@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+
+  php-mb-symfony:
+    build: .
+    container_name: php-mb-symfony
+    volumes:
+      - ./:/library
+      - php-mb-symfony-user-worker:/home/worker
+
+volumes:
+  php-mb-symfony-user-worker:
