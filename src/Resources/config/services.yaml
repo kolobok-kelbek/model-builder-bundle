@@ -31,7 +31,7 @@ services:
       - '@ModelBuilder\PreparerCollection\DefaultPreparerCollection'
 
   ModelBuilder\Analyzer\:
-    resource: '../src/Builder/Analyzer/'
+    resource: '../../src/Builder/Analyzer/'
 
   ModelBuilder\Manager\DefaultBuildManager:
     arguments:
