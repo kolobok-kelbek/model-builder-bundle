@@ -1,7 +1,8 @@
 {
     "name": "kelbek/model-builder-symfony",
     "description": "Model builder library.",
-    "type": "library",
+    "type": "symfony-bundle",
+    "version": "0.1.0",
     "license": "MIT",
     "authors": [
         {
@@ -11,14 +12,16 @@
     ],
     "autoload": {
         "psr-4": {
-            "ModelBuilder\\": ""
+            "ModelBuilder\\Bundle\\": "src/"
         }
     },
     "require": {
         "php": ">=8.0",
-        "kelbek/model-builder": "dev-main"
+        "kelbek/model-builder": "dev-main",
+        "symfony/config": "^5.3",
+        "symfony/dependency-injection": "^5.3",
+        "symfony/http-kernel": "^5.3"
     },
-    "require-dev": {},
     "repositories": [
         {
             "type": "git",
