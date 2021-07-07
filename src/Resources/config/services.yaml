@@ -3,6 +3,12 @@ services:
     autowire: true
     autoconfigure: true
 
+  ModelBuilder\Preparer\SetterNameToFieldNamePreparer:
+
+  ModelBuilder\Analyzer\ConstructAnalyzer:
+  ModelBuilder\Analyzer\PublicFieldsAnalyzer:
+  ModelBuilder\Analyzer\SetterAnalyzer:
+
   ModelBuilder\PreparerCollection\DefaultPreparerCollection:
     arguments:
       - '@ModelBuilder\Preparer\SetterNameToFieldNamePreparer'
@@ -29,9 +35,6 @@ services:
       - !php/const ModelBuilder\Ways::REFLECTION
       - 4
       - '@ModelBuilder\PreparerCollection\DefaultPreparerCollection'
-
-  ModelBuilder\Analyzer\:
-    resource: '../../src/Builder/Analyzer/'
 
   ModelBuilder\Manager\DefaultBuildManager:
     arguments:
